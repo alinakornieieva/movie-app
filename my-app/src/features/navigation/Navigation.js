@@ -1,5 +1,7 @@
+import './Navigation.css'
+
 const Navigation = () => {
-    return <div>
+    return <div className='Navigation'>
         <span>Home</span>
         <span>Search</span> 
         <span>My favourite</span>
