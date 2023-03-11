@@ -5,6 +5,7 @@ import RandomMovie from './features/randomMovie/RandomMovie';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import SearchMovie from './features/searchMovie/SearchMovie';
 import FavouriteMovies from './features/favouriteMovies/FavouriteMovies';
+import SingleMoviePage from './features/singleMoviePage/SingleMoviePage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<RandomMovie/>}/>
           <Route path='/movie-search' element={<SearchMovie/>}/>
+          <Route path='/movie-search/:id' element={<SingleMoviePage/>}/>
           <Route path='/favourite-movies' element={<FavouriteMovies/>}/>
         </Routes>
       </div>

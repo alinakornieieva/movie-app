@@ -16,15 +16,18 @@ const RandomMovie = () => {
     }, [])
     return <div className="Random-movie">
         <img src={randomMovieItem.Poster} alt="random-movie-poster" />
-        <div>
-            <div>{randomMovieItem.Title}</div>
-            <div>{randomMovieItem.Plot}</div>
-            <div>Director: {randomMovieItem.Director}</div>
-            <div>Actors: {randomMovieItem.Actors}</div>
-            <div>Year: {randomMovieItem.Year}</div>
-            <div>Country: {randomMovieItem.Country}</div>
-            <div>Genre: {randomMovieItem.Genre}</div>
-            <Rating name="read-only" value={+(randomMovieItem.imdbRating)/2} readOnly />
+        <div className="info">
+            <div className="title">{randomMovieItem.Title}</div>
+            <div className="basic">{randomMovieItem.Plot}</div>
+            <div className="basic">Director: {randomMovieItem.Director}</div>
+            <div className="basic">Actors: {randomMovieItem.Actors}</div>
+            <div className="basic">Year: {randomMovieItem.Year}</div>
+            <div className="basic">Country: {randomMovieItem.Country}</div>
+            <div className="basic">Genre: {randomMovieItem.Genre}</div>
+            <Rating name="read-only" size="large" value={+(randomMovieItem.imdbRating)/2} readOnly />
+            <div>
+                <button>Show another</button>
+            </div>
         </div>
     </div>
 }

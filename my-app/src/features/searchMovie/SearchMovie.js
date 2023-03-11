@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import './SearchMovie.css'
 import useHttp from "../../hooks/http.hook"
 import { moviesFetched, termRecieve } from "../../slices/SearchMovieSlice"
+import { NavLink } from "react-router-dom"
 
 const SearchMovie = () => {
     const dispatch = useDispatch()
@@ -38,9 +39,11 @@ const SearchMovie = () => {
 const View = (props) => {
     return <div className="movies-list-search">
         {props.moviesList.map((item) => <div className="movies-list-card" key={item.imdbID}>
+            <NavLink to={`/movie-search/${item.imdbID}`}>
                 <img src={item.Poster} alt={item.Title} />
-                <div className="movies-list-search-title">{item.Title}</div>
-                </div>)}
+            </NavLink>
+            <div className="movies-list-search-title">{item.Title}</div>
+            </div>)}
     </div>
 }
 
