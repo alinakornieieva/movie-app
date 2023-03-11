@@ -13,7 +13,7 @@ const RandomMovie = () => {
     useEffect(() => {
         request('https://www.omdbapi.com/?i=tt3896198&apikey=a5d79ee3')
         .then(data => dispatch(randomMovieFetched(data)))
-    })
+    }, [])
     return <div className="Random-movie">
         <img src={randomMovieItem.Poster} alt="random-movie-poster" />
         <div>

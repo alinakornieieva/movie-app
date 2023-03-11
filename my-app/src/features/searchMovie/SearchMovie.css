@@ -1,0 +1,40 @@
+.movies-list-search{
+    margin-top: 20px;
+    display: grid;
+    align-items: start;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 450px 450px 450px;
+    grid-gap: 30px;
+}
+
+input{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.Search-movie h5{
+    color: aliceblue;
+    font-size: 20px;
+    margin-left: 5px;
+    font-weight: 400;
+}
+
+.movies-list-search img{
+    width: 250px;
+}
+
+.movies-list-card{
+    background-color: rgb(182, 186, 189);
+    box-sizing: border-box;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.movies-list-search-title{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px 0;
+}
+
