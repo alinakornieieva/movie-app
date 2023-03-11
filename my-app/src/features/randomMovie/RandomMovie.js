@@ -11,9 +11,20 @@ const RandomMovie = () => {
     const dispatch = useDispatch()
     const {randomMovieItem} = useSelector(state => state.randomMovie)
     useEffect(() => {
-        request('https://www.omdbapi.com/?i=tt3896198&apikey=a5d79ee3')
-        .then(data => dispatch(randomMovieFetched(data)))
+        updateMovie()
     }, [])
+    const updateMovie = () => {
+        const id = String(Math.floor(Math.random() * (9999999 - 0o000000) + 0o000000))
+        console.log(id)
+        request(`https://www.omdbapi.com/?i=tt${id}&apikey=a5d79ee3`)
+        .then((data) => {
+            if (data.Error) {
+                console.log(data)
+            } else {
+                dispatch(randomMovieFetched(data))
+            }
+        })
+    }
     return <div className="Random-movie">
         <img src={randomMovieItem.Poster} alt="random-movie-poster" />
         <div className="info">
@@ -26,7 +37,7 @@ const RandomMovie = () => {
             <div className="basic">Genre: {randomMovieItem.Genre}</div>
             <Rating name="read-only" size="large" value={+(randomMovieItem.imdbRating)/2} readOnly />
             <div>
-                <button>Show another</button>
+                <button onClick={updateMovie}>Show another</button>
             </div>
         </div>
     </div>

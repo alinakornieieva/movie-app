@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    randomMovieItem: {}
+    randomMovieItem: {},
 }
 
 const RandomMovieSlice = createSlice({
