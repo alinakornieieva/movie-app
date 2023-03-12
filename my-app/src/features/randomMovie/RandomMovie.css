@@ -1,8 +1,7 @@
 .Random-movie{
     display: flex;
-    color: aliceblue;
+    color: #f0f8ff;
 }
-
 .Random-movie img{
     border-radius: 4px;
 }

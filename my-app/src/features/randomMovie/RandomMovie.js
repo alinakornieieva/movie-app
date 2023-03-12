@@ -29,12 +29,15 @@ const RandomMovie = () => {
             } else {
                 dispatch(randomMovieFetched(data))
             }
-        }).catch(() => dispatch(randomMovieErrorFetching()))
+        })
+        .catch(() => dispatch(randomMovieErrorFetching()))
     }
     const loader = loadingStatus === 'fetching' ? <Preloader/> : null
+    const errorMessage = loadingStatus === 'error' ? <h5>Error...</h5> : null
     const content = loadingStatus === 'idle' ? <View randomMovieItem={randomMovieItem} updateMovie={updateMovie}/> : null
     return  <div>
         {loader}
+        {errorMessage}
         {content}
     </div>
 }
