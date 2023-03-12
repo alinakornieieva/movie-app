@@ -13,7 +13,7 @@ const SingleMoviePage = () => {
     const {request} = useHttp()
     const dispatch = useDispatch()
     useEffect(() => {
-        request(`https://www.omdbapi.com/?i=${id}&apikey=a5d79ee3`)
+        request(`https://www.omdbapi.com/?i=${id}&plot=full&apikey=a5d79ee3`)
             .then((data) => dispatch(movieFetched(data)))
     }, [])
     return <div className="Random-movie">
