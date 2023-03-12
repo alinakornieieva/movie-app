@@ -3,9 +3,15 @@ import './Navigation.css'
 
 const Navigation = () => {
     return <div className='Navigation'>
-        <NavLink to='/'><span>Home</span></NavLink>
-        <NavLink to='/movie-search'><span>Search</span></NavLink>
-        <NavLink to='favourite-movie'><span>My favourite</span></NavLink>
+        <NavLink to='/' style={({ isActive }) => ({
+            color: isActive ? '#fff' : '#a6a6a6',
+        })}><span>Home</span></NavLink>
+        <NavLink to='/movie-search' style={({ isActive }) => ({
+            color: isActive ? '#fff' : '#a6a6a6',
+        })}><span>Search</span></NavLink>
+        <NavLink to='favourite-movie' style={({ isActive }) => ({
+            color: isActive ? '#fff' : '#a6a6a6',
+        })}><span>My favourite</span></NavLink>
     </div>
 }
 
