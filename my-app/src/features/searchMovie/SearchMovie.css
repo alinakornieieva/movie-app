@@ -4,7 +4,7 @@
     align-items: start;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 450px 450px 450px;
+    grid-template-rows: 460px 460px 460px;
     grid-gap: 30px;
 }
 
