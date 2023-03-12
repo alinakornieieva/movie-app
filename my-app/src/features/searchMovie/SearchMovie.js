@@ -1,22 +1,18 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import './SearchMovie.css'
-import useHttp from "../../hooks/http.hook"
 import { moviesFetched, termRecieve } from "../../slices/SearchMovieSlice"
 import { NavLink } from "react-router-dom"
+import useMovieService from "../../services/MovieService"
 
 const SearchMovie = () => {
     const dispatch = useDispatch()
     const {term, moviesList} = useSelector(state => state.searchMovie)
-    const {request} = useHttp()
+    const {getMoviesBySearch} = useMovieService()
     useEffect(() => {
-        request(`https://www.omdbapi.com/?s=${term}&apikey=a5d79ee3`)
+        getMoviesBySearch(term)
             .then((data) => {
-                if (data.Error) {
-                    dispatch(moviesFetched(data.Error))
-                } else {
-                    dispatch(moviesFetched(data.Search))
-                } 
+                dispatch(moviesFetched(data))
             })
     }, [term])
     const start = moviesList === 'Incorrect IMDb ID.' ? <h5>Start to search...</h5> : null
@@ -38,11 +34,11 @@ const SearchMovie = () => {
 
 const View = (props) => {
     return <div className="movies-list-search">
-        {props.moviesList.map((item) => <div className="movies-list-card" key={item.imdbID}>
-            <NavLink to={`/movie-search/${item.imdbID}`}>
-                <img src={item.Poster} alt={item.Title} />
+        {props.moviesList.map((item) => <div className="movies-list-card" key={item.id}>
+            <NavLink to={`/movie-search/${item.id}`}>
+                <img src={item.poster} alt={item.title} />
             </NavLink>
-            <div className="movies-list-search-title">{item.Title}</div>
+            <div className="movies-list-search-title">{item.title}</div>
             </div>)}
     </div>
 }

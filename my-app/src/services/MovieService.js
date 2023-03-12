@@ -7,11 +7,19 @@ const useMovieService = () => {
     const _apiKey = 'apikey=a5d79ee3'
     const {request} = useHttp()
     const getMovie = async (id) => {
-        const res = await request(`${_apiBase}i=tt${id}&plot=full&${_apiKey}`)
+        const res = await request(`${_apiBase}i=${id}&plot=full&${_apiKey}`)
         if (res.Error) {
             return 'error'
         } else {
             return transformData(res)
+        }
+    }
+    const getMoviesBySearch = async (term) => {
+        const res = await request(`${_apiBase}s=${term}&${_apiKey}`)
+        if (res.Error) {
+            return res.Error
+        } else {
+            return res.Search.map(transformDataBySearch)
         }
     }
     const transformData = (res) => {
@@ -27,6 +35,13 @@ const useMovieService = () => {
             rating: res.imdbRating === "N/A" ? null : +(res.imdbRating)/2,
         }
     }
-    return {getMovie}
+    const transformDataBySearch = (res) => {
+        return {
+            id: res.imdbID,
+            title: res.Title,
+            poster: res.Poster !== "N/A" ? res.Poster : ImgNotFound,
+        }
+    }
+    return {getMovie, getMoviesBySearch}
 }
 export default useMovieService
