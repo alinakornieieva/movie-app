@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { movieErrorFetching, movieFetched, movieFetching } from "../../slices/SingleMovieSlice"
 import { Rating } from "@mui/material"
 import Preloader from "../preloader/Preloader"
@@ -44,9 +44,6 @@ const View = ({movie}) => {
         <div className="basic">Genre: {movie.genre}</div>
         {movie.rating ? 
         <Rating name="read-only" size="large" value={movie.rating} readOnly /> : null}
-        <div>
-            <NavLink to='/movie-search'><button>Back to search page</button></NavLink> 
-        </div>
     </div>
 </div>
 }

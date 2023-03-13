@@ -25,8 +25,8 @@ const useMovieService = () => {
     const transformData = (res) => {
         return {
             title: res.Title,
-            director: res.Director,
-            actors: res.Actors,
+            director: res.Director !== "N/A" ? res.Director : 'No director description',
+            actors: res.Actors !== "N/A" ? res.Actors : 'No actors description',
             poster: res.Poster !== "N/A" ? res.Poster : ImgNotFound,
             plot: res.Plot !== "N/A" ? res.Plot : 'No plot description',
             year: res.Year !== "N/A" ? res.Year : 'No year description',
