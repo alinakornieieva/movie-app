@@ -9,7 +9,7 @@ const Navigation = () => {
         <NavLink to='/movie-search' style={({ isActive }) => ({
             color: isActive ? '#fff' : '#a6a6a6',
         })}><span>Search</span></NavLink>
-        <NavLink to='favourite-movie' style={({ isActive }) => ({
+        <NavLink to='/favourite-movies' style={({ isActive }) => ({
             color: isActive ? '#fff' : '#a6a6a6',
         })}><span>My favourite</span></NavLink>
     </div>
