@@ -4,9 +4,7 @@ import { useParams } from "react-router-dom"
 import { movieErrorFetching, movieFetched, movieFetching } from "../../slices/SingleMovieSlice"
 import { Rating } from "@mui/material"
 import Preloader from "../preloader/Preloader"
-///change
 import '../randomMovie/RandomMovie.css'
-///
 import './SingleMovie.css'
 import useMovieService from "../../services/MovieService"
 
@@ -32,7 +30,7 @@ const SingleMoviePage = () => {
 }
 
 const View = ({movie}) => {
-    return <div className="Random-movie Single-movie">
+    return <div className="Single-movie">
     <img src={movie.poster} alt={movie.title} />
     <div className="info">
         <div className="title">{movie.title}</div>

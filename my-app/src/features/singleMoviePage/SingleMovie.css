@@ -1,7 +1,4 @@
-.Single-movie button{
-    padding: 8px;
-    border-radius: 4px;
-    border: none;
-    font-size: 16px;
-    margin-top: 20px;
+.Single-movie{
+    display: flex;
+    color: #f0f8ff;
 }

@@ -1,19 +1,25 @@
-import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { deleteMovie } from "../../slices/FavouriteMoviesSlice"
+import { addMovieFromLS, deleteMovie } from "../../slices/FavouriteMoviesSlice"
 import '../searchMovie/SearchMovie.css'
 import './FavouriteMovies.css'
 
 const FavouriteMovies = () => {
     const dispatch = useDispatch()
+    const {favouriteMovies} = useSelector(state => state.favouriteMovies)
     let favouriteMoviesLS = JSON.parse(localStorage.getItem('favourite-movies'))
+    useEffect(() => {
+        dispatch(addMovieFromLS(favouriteMoviesLS))
+    }, [])
     const deleteMovieItem = (movieId) => {
         dispatch(deleteMovie(movieId))
         favouriteMoviesLS = favouriteMoviesLS.filter((item) => item.id !== movieId)
         localStorage.setItem('favourite-movies', JSON.stringify(favouriteMoviesLS))
+        dispatch(addMovieFromLS(favouriteMoviesLS))
     }
     return <div className="movies-list-search">
-        {favouriteMoviesLS.length > 0 ? favouriteMoviesLS.map(item => <div className="movies-list-card" key={item.id}>
+        {favouriteMovies.length > 0 ? favouriteMovies.map(item => <div className="movies-list-card" key={item.id}>
                 <div className="movies-list-search-card-top">
                     <div className="overlay" onClick={() => deleteMovieItem(item.id)}>
                         <span>Delete from Favourites</span>
