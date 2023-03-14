@@ -4,10 +4,12 @@ import './SearchMovie.css'
 import { moviesFetched, termRecieve } from "../../slices/SearchMovieSlice"
 import { NavLink } from "react-router-dom"
 import useMovieService from "../../services/MovieService"
+import { addMovie } from "../../slices/FavouriteMoviesSlice"
 
 const SearchMovie = () => {
     const dispatch = useDispatch()
     const {term, moviesList} = useSelector(state => state.searchMovie)
+    const {favouriteMovies} = useSelector(state => state.favouriteMovies)
     const {getMoviesBySearch} = useMovieService()
     useEffect(() => {
         getMoviesBySearch(term)
@@ -16,16 +18,8 @@ const SearchMovie = () => {
         })
     }, [term])
     const addMovieItem = (movie) => {
-        const favouriteMoviesLS =  JSON.parse(localStorage.getItem('favourite-movies'))
-        let res
-        favouriteMoviesLS.forEach((item) => {
-            if (item.id === movie.id) {
-                res = [...favouriteMoviesLS]
-            } else {
-                res = [...favouriteMoviesLS, movie]
-            }
-        })
-        localStorage.setItem('favourite-movies', JSON.stringify(res))
+        dispatch(addMovie(movie))
+        localStorage.setItem('favourite-movies', JSON.stringify([...favouriteMovies, movie]))
     }
     const start = moviesList === 'Incorrect IMDb ID.' ? <h5>Start to search...</h5> : null
     const tooManyResults = moviesList === 'Too many results.' ? <h5>Need more info...</h5> : null

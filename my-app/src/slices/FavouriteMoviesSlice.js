@@ -11,6 +11,9 @@ const FavouriteMoviesSlice = createSlice({
         addMovieFromLS: (state, action) => {
             state.favouriteMovies = action.payload
         },
+        addMovie: (state, action) => {
+            state.favouriteMovies.push(action.payload)
+        },
         deleteMovie: (state, action) => {
             state.favouriteMovies = state.favouriteMovies.filter((item) => item.id !== action.payload)}
     }
