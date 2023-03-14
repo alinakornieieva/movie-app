@@ -8,10 +8,11 @@ import './FavouriteMovies.css'
 const FavouriteMovies = () => {
     const dispatch = useDispatch()
     const {favouriteMovies} = useSelector(state => state.favouriteMovies)
-    console.log(favouriteMovies) 
     let favouriteMoviesLS = JSON.parse(localStorage.getItem('favourite-movies'))
     useEffect(() => {
-        dispatch(addMovieFromLS(favouriteMoviesLS))
+        if (localStorage.getItem('favourite-movies')) {
+            dispatch(addMovieFromLS(favouriteMoviesLS))
+        }
     }, [])
     const deleteMovieItem = (movieId) => {
         dispatch(deleteMovie(movieId))
